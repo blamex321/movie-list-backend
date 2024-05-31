@@ -14,7 +14,7 @@ router.post('/', auth, async (req, res) => {
     await newList.save();
     res.status(201).json(newList);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: err.message});
   }
 });
 
@@ -26,7 +26,7 @@ router.get('/', auth, async (req, res) => {
     const lists = await MovieList.find({ userId });
     res.json(lists);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -45,7 +45,7 @@ router.post('/:id/movies', auth, async (req, res) => {
     const updatedList = await list.save();
     res.json(updatedList);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -64,7 +64,7 @@ router.patch('/:id/visibility', auth, async (req, res) => {
     const updatedList = await list.save();
     res.json(updatedList);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: err.message });
   }
 });
 
